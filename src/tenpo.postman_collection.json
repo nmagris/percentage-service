@@ -1,0 +1,140 @@
+{
+  "info": {
+    "_postman_id": "e3a1b4a0-c76b-49a6-b184-d4a40aaedfe2",
+    "name": "tenpo",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "11282904"
+  },
+  "item": [
+    {
+      "name": "percentage",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/percentage/calculated-value?first_number=5&second_number=5",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "percentage",
+            "calculated-value"
+          ],
+          "query": [
+            {
+              "key": "first_number",
+              "value": "5"
+            },
+            {
+              "key": "second_number",
+              "value": "5"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "percentage test",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/percentage/test/calculated-value?first_number=5&second_number=5&mocked_endpoint=9a90b758-6b59-4748-9539-37353d5a2183",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "percentage",
+            "test",
+            "calculated-value"
+          ],
+          "query": [
+            {
+              "key": "first_number",
+              "value": "5"
+            },
+            {
+              "key": "second_number",
+              "value": "5"
+            },
+            {
+              "key": "mocked_endpoint",
+              "value": "9a90b758-6b59-4748-9539-37353d5a2183"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api calls",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"mock\": \"https://run.mocky.io/v3/b1cc418a-cdbc-462b-a8f0-30f7f6176a9b\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api-call?page=0&size=2",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api-call"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
