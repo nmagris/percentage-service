@@ -1,0 +1,56 @@
+services:
+  app:
+    build: .
+    image: nataliamagris/percentage-service:latest
+    container_name: percentage_service
+    working_dir: /opt/target
+    command: [ "java", "-jar", "/opt/target/percentage-service-0.0.1-SNAPSHOT.jar" ]
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/percentage_service
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: admin
+      AWS_REGION: us-east-1
+      AWS_ACCESS_KEY_ID: test
+      AWS_SECRET_ACCESS_KEY: test
+    depends_on:
+      - db
+      - redis
+      - localstack
+
+  db:
+    image: 'postgres:latest'
+    container_name: postgres_db
+    restart: always
+    environment:
+      POSTGRES_DB: percentage_service
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./init-scripts/init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  redis:
+    image: "redis:latest"
+    container_name: redis_server
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --appendonly no --save ""
+
+  localstack:
+    image: localstack/localstack:latest
+    container_name: localstack
+    ports:
+      - "4566:4566"
+    command: >
+      sh -c "
+      sleep 10 &&
+      awslocal sqs create-queue --queue-name percentage-service_api-calls --attributes VisibilityTimeout=30"
+
+volumes:
+  postgres_data:
+  redis_data:
+  localstack-data:
