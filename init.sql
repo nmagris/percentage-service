@@ -8,3 +8,5 @@ CREATE TABLE IF NOT EXISTS api_calls (
     response_message VARCHAR(255) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+
+CREATE INDEX idx_api_calls_endpoint_created_at ON api_calls (endpoint, created_at);
